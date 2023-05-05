@@ -1,4 +1,4 @@
-import { setFailed, setOutput } from '@actions/core';
+import { info, setFailed, setOutput } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
@@ -263,6 +263,7 @@ export const run = async (
     });
 
     if (dataCollector.get().errors.length > 0) {
+        info(`Errors: ${JSON.stringify(dataCollector.get().errors, null, 2)}`);
         setFailed(i18n('failed'));
     }
 };
