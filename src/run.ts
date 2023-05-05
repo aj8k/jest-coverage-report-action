@@ -168,6 +168,7 @@ export const run = async (
             );
         }
     );
+    info(`thresholdResults: ${JSON.stringify(thresholdResults, null, 2)}`);
 
     const [isReportContentGenerated, summaryReport] = await runStage(
         'generateReportContent',
