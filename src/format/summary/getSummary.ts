@@ -1,3 +1,5 @@
+import { info } from '@actions/core';
+
 import { CoverageSummary } from '../../typings/Coverage';
 import { CoverageMap, FileCoverage } from '../../typings/JsonReport';
 import { getPercents } from '../getPercents';
@@ -11,6 +13,8 @@ export const getSummary = (
     const values = Object.values(map).map((value) =>
         'statementMap' in value ? value : value.data
     );
+
+    info(`values: ${JSON.stringify(values)}`);
 
     const total = values.reduce(
         (acc, currValue) => acc + totalCounter(currValue),
